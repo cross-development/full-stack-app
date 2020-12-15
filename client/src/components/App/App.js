@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 //Components
 import Form from '../Form';
-import Loader from '../Loader';
-import GeoCadsList from '../GeoCadsList';
+import { Loader } from '../Common';
+import GeoCadsTable from '../GeoCadsTable';
 //Services
 import { fetchGeoCadsData, uploadDataToServer } from '../../services/geoCadAPI';
 
@@ -35,7 +35,7 @@ const App = () => {
 
 			{loading && <Loader onLoad={loading} />}
 
-			{geoCads.length > 0 && <GeoCadsList geoCads={geoCads} />}
+			{geoCads.length > 0 && <GeoCadsTable geoCads={geoCads} />}
 		</>
 	);
 };
