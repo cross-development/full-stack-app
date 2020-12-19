@@ -1,5 +1,7 @@
 //Core
 import React from 'react';
+//Styles
+import { StyledForm, StyledLabel, StyledInput, StyledButton } from './Form.styles';
 
 const Form = ({ onHandleSubmit }) => {
 	const handleSubmit = e => {
@@ -9,10 +11,13 @@ const Form = ({ onHandleSubmit }) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input type="file" accept="application/JSON" />
-			<button type="submit">Отправить</button>
-		</form>
+		<StyledForm onSubmit={handleSubmit}>
+			<StyledLabel>
+				<StyledInput type="file" accept="application/JSON" />
+			</StyledLabel>
+
+			<StyledButton type="submit">Отправить</StyledButton>
+		</StyledForm>
 	);
 };
 

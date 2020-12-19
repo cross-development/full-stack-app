@@ -4,6 +4,7 @@ import React from 'react';
 import BeatLoader from 'react-spinners/BeatLoader';
 //Styles
 import { css } from '@emotion/core';
+import { StyledLoaderWrap } from './Loader.styles';
 
 const override = css`
 	display: block;
@@ -11,9 +12,9 @@ const override = css`
 `;
 
 const Loader = ({ onLoad }) => (
-	<div>
+	<StyledLoaderWrap>
 		<BeatLoader css={override} size={20} color={'#bebebe'} loading={onLoad} />
-	</div>
+	</StyledLoaderWrap>
 );
 
 export default Loader;

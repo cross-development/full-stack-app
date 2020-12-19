@@ -3,28 +3,32 @@ import React, { useState, useEffect } from 'react';
 //Components
 import Form from '../Form';
 import { Loader } from '../Common';
-import GeoCadsTable from '../GeoCadsTable';
+import AreasTable from '../AreasTable';
 //Services
-import { fetchGeoCadsData, uploadDataToServer } from '../../services/geoCadAPI';
+import { fetchAreasData, uploadDataToServer } from 'services/areaAPI';
 
 const App = () => {
-	const [geoCads, setGeoCads] = useState([]);
+	const [areas, setAreas] = useState([]);
 	const [loading, setLoading] = useState(false);
 
-	useEffect(() => {
+	const getAreasData = () => {
 		setLoading(true);
 
-		fetchGeoCadsData()
-			.then(setGeoCads)
+		fetchAreasData()
+			.then(setAreas)
 			.catch(error => console.log(error))
 			.finally(() => setLoading(false));
+	};
+
+	useEffect(() => {
+		getAreasData();
 	}, []);
 
 	const handleSubmit = file => {
 		setLoading(true);
 
 		uploadDataToServer({ file })
-			.then(data => setGeoCads(prevState => [...prevState, ...data]))
+			.then(data => setAreas(prevState => [...prevState, ...data]))
 			.catch(error => console.log(error))
 			.finally(() => setLoading(false));
 	};
@@ -35,7 +39,7 @@ const App = () => {
 
 			{loading && <Loader onLoad={loading} />}
 
-			{geoCads.length > 0 && <GeoCadsTable geoCads={geoCads} />}
+			{areas.length > 0 && <AreasTable areas={areas} />}
 		</>
 	);
 };
