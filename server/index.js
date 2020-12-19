@@ -1,3 +1,3 @@
-const GeoCadServer = require('./api/server');
+const AreasServer = require('./api/server');
 
-new GeoCadServer().start();
+new AreasServer().start();
